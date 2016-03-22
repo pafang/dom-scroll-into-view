@@ -15,7 +15,7 @@ webpackJsonp([0,1],[
 	var $ = __webpack_require__(3);
 	var scrollIntoView = __webpack_require__(4);
 	
-	$('#__react-content').html('\n<button id=\'scrollIntoView\'>scrollIntoView</button>\n<br/>\n<label>\n alignWithLeft:\n <select id="alignWithLeft">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label><br/>\n<label>\n alignWithTop:\n <select id="alignWithTop">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label>\n<label><br/>\n allowHorizontalScroll:\n <select id="allowHorizontalScroll">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label><br/>\n<label>\n onlyScrollIfNeeded:\n <select id="onlyScrollIfNeeded">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label>\n\n<div id="container" class="demo-container">\n<div id="ex1" class="demo-box">\nfind me!\n</div>\n<div class="demo-placeholder">\ncontainer\n</div>\n</div>\n');
+	$('#__react-content').html('\n<button id=\'scrollIntoView\'>scrollIntoView</button>\n<br/>\n<label>\n alignWithLeft:\n <select id="alignWithLeft">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label><br/>\n<label>\n alignWithTop:\n <select id="alignWithTop">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label>\n<label><br/>\n allowHorizontalScroll:\n <select id="allowHorizontalScroll">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label><br/>\n<label>\n onlyScrollIfNeeded:\n <select id="onlyScrollIfNeeded">\n <option>undefined</option>\n <option>true</option>\n <option>false</option>\n </select>\n</label><br/>\n<label>\n offsetTop:\n <input value="0" id="offsetTop" />\n</label><br/>\n<label>\n offsetBottom:\n <input value="0" id="offsetBottom" />\n</label><br/>\n<label>\n offsetLeft:\n <input value="0" id="offsetLeft" />\n</label><br/>\n<label>\n offsetRight:\n <input value="0" id="offsetRight" />\n</label><br/>\n<div id="container" class="demo-container">\n<div id="ex1" class="demo-box">\nfind me!\n</div>\n<div class="demo-placeholder">\ncontainer\n</div>\n</div>\n');
 	
 	function transformValue(v) {
 	  if (v === 'false') {
@@ -31,7 +31,11 @@ webpackJsonp([0,1],[
 	    alignWithLeft: transformValue($('#alignWithLeft').val()),
 	    alignWithTop: transformValue($('#alignWithTop').val()),
 	    allowHorizontalScroll: transformValue($('#allowHorizontalScroll').val()),
-	    onlyScrollIfNeeded: transformValue($('#onlyScrollIfNeeded').val())
+	    onlyScrollIfNeeded: transformValue($('#onlyScrollIfNeeded').val()),
+	    offsetTop: parseInt($('#offsetTop').val(), 10) || 0,
+	    offsetLeft: parseInt($('#offsetLeft').val(), 10) || 0,
+	    offsetBottom: parseInt($('#offsetBottom').val(), 10) || 0,
+	    offsetRight: parseInt($('#offsetRight').val(), 10) || 0
 	  });
 	};
 
@@ -11109,6 +11113,10 @@ webpackJsonp([0,1],[
 	  var onlyScrollIfNeeded = config.onlyScrollIfNeeded;
 	  var alignWithTop = config.alignWithTop;
 	  var alignWithLeft = config.alignWithLeft;
+	  var offsetTop = config.offsetTop || 0;
+	  var offsetLeft = config.offsetLeft || 0;
+	  var offsetBottom = config.offsetBottom || 0;
+	  var offsetRight = config.offsetRight || 0;
 	
 	  allowHorizontalScroll = allowHorizontalScroll === undefined ? true : allowHorizontalScroll;
 	
@@ -11137,12 +11145,12 @@ webpackJsonp([0,1],[
 	    };
 	    // elem 相对 container 可视视窗的距离
 	    diffTop = {
-	      left: elemOffset.left - winScroll.left,
-	      top: elemOffset.top - winScroll.top
+	      left: elemOffset.left - winScroll.left - offsetLeft,
+	      top: elemOffset.top - winScroll.top - offsetTop
 	    };
 	    diffBottom = {
-	      left: elemOffset.left + ew - (winScroll.left + ww),
-	      top: elemOffset.top + eh - (winScroll.top + wh)
+	      left: elemOffset.left + ew - (winScroll.left + ww) + offsetRight,
+	      top: elemOffset.top + eh - (winScroll.top + wh) + offsetBottom
 	    };
 	    containerScroll = winScroll;
 	  } else {
@@ -11156,12 +11164,12 @@ webpackJsonp([0,1],[
 	    // elem 相对 container 可视视窗的距离
 	    // 注意边框, offset 是边框到根节点
 	    diffTop = {
-	      left: elemOffset.left - (containerOffset.left + (parseFloat(util.css(container, 'borderLeftWidth')) || 0)),
-	      top: elemOffset.top - (containerOffset.top + (parseFloat(util.css(container, 'borderTopWidth')) || 0))
+	      left: elemOffset.left - (containerOffset.left + (parseFloat(util.css(container, 'borderLeftWidth')) || 0)) - offsetLeft,
+	      top: elemOffset.top - (containerOffset.top + (parseFloat(util.css(container, 'borderTopWidth')) || 0)) - offsetTop
 	    };
 	    diffBottom = {
-	      left: elemOffset.left + ew - (containerOffset.left + cw + (parseFloat(util.css(container, 'borderRightWidth')) || 0)),
-	      top: elemOffset.top + eh - (containerOffset.top + ch + (parseFloat(util.css(container, 'borderBottomWidth')) || 0))
+	      left: elemOffset.left + ew - (containerOffset.left + cw + (parseFloat(util.css(container, 'borderRightWidth')) || 0)) + offsetRight,
+	      top: elemOffset.top + eh - (containerOffset.top + ch + (parseFloat(util.css(container, 'borderBottomWidth')) || 0)) + offsetBottom
 	    };
 	  }
 	

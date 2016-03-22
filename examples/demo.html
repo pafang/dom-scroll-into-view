@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>demo.js - example - dom-scroll-into-view@1.1.0</title>
+  <title>demo.js - example - dom-scroll-into-view@1.2.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,7 +257,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
 <div class="container">
   <div class="header">
-    <h1>dom-scroll-into-view@1.1.0</h1>
+    <h1>dom-scroll-into-view@1.2.0</h1>
 
     <p>scroll dom node into view automatically</p>
   </div>
@@ -302,8 +302,23 @@ $(<span class="hljs-string">'#__react-content'</span>).html(<span class="hljs-st
  &lt;option&gt;true&lt;/option&gt;
  &lt;option&gt;false&lt;/option&gt;
  &lt;/select&gt;
-&lt;/label&gt;
-
+&lt;/label&gt;&lt;br/&gt;
+&lt;label&gt;
+ offsetTop:
+ &lt;input value="0" id="offsetTop" /&gt;
+&lt;/label&gt;&lt;br/&gt;
+&lt;label&gt;
+ offsetBottom:
+ &lt;input value="0" id="offsetBottom" /&gt;
+&lt;/label&gt;&lt;br/&gt;
+&lt;label&gt;
+ offsetLeft:
+ &lt;input value="0" id="offsetLeft" /&gt;
+&lt;/label&gt;&lt;br/&gt;
+&lt;label&gt;
+ offsetRight:
+ &lt;input value="0" id="offsetRight" /&gt;
+&lt;/label&gt;&lt;br/&gt;
 &lt;div id="container" class="demo-container"&gt;
 &lt;div id="ex1" class="demo-box"&gt;
 find me!
@@ -329,6 +344,10 @@ $(<span class="hljs-string">'#scrollIntoView'</span>)[<span class="hljs-number">
     alignWithTop: transformValue($(<span class="hljs-string">'#alignWithTop'</span>).val()),
     allowHorizontalScroll: transformValue($(<span class="hljs-string">'#allowHorizontalScroll'</span>).val()),
     onlyScrollIfNeeded: transformValue($(<span class="hljs-string">'#onlyScrollIfNeeded'</span>).val()),
+    offsetTop: <span class="hljs-built_in">parseInt</span>($(<span class="hljs-string">'#offsetTop'</span>).val(), <span class="hljs-number">10</span>) || <span class="hljs-number">0</span>,
+    offsetLeft: <span class="hljs-built_in">parseInt</span>($(<span class="hljs-string">'#offsetLeft'</span>).val(), <span class="hljs-number">10</span>) || <span class="hljs-number">0</span>,
+    offsetBottom: <span class="hljs-built_in">parseInt</span>($(<span class="hljs-string">'#offsetBottom'</span>).val(), <span class="hljs-number">10</span>) || <span class="hljs-number">0</span>,
+    offsetRight: <span class="hljs-built_in">parseInt</span>($(<span class="hljs-string">'#offsetRight'</span>).val(), <span class="hljs-number">10</span>) || <span class="hljs-number">0</span>,
   });
 };
 </code></pre></div>

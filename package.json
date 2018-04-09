@@ -1,12 +1,12 @@
 {
-  "name": "dom-scroll-into-view",
+  "name": "dom-scroll-into-view-ie",
   "version": "1.2.1",
   "description": "scroll dom node into view automatically",
   "keywords": [
     "dom",
     "scrollIntoView"
   ],
-  "homepage": "http://github.com/yiminghe/dom-scroll-into-view",
+  "homepage": "https://github.com/pafang/dom-scroll-into-view",
   "author": "yiminghe@gmail.com",
   "files": [
     "lib"
@@ -14,7 +14,7 @@
   "main": "./lib/index",
   "repository": {
     "type": "git",
-    "url": "git@github.com:yiminghe/dom-scroll-into-view.git"
+    "url": "git+https://github.com/pafang/dom-scroll-into-view.git"
   },
   "bugs": {
     "url": "http://github.com/yiminghe/dom-scroll-into-view/issues"
@@ -25,6 +25,7 @@
   },
   "scripts": {
     "build": "rc-tools run build",
+    "compile": "rc-tools run compile --babel-runtime",
     "gh-pages": "rc-tools run gh-pages",
     "start": "rc-tools run server",
     "pub": "rc-tools run pub",

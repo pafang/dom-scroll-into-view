@@ -135,7 +135,7 @@ function _getComputedStyleIE(elem, name) {
 
 let getComputedStyleX;
 if (typeof window !== 'undefined') {
-  getComputedStyleX = window.getComputedStyle ? _getComputedStyle : _getComputedStyleIE;
+  getComputedStyleX = window.getComputedStyle ? _getComputedStyleIE : _getComputedStyleIE;
 }
 
 function each(arr, fn) {
